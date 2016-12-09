@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -85,22 +85,19 @@
 
 
 <meta name="description" content="一、简述1、我们在Java web 项目开发中，都会有一个web.xml文件，这个文件中一定会有如下一段代码：
-123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;
-这个Conte">
+123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring 启动过程详解">
 <meta property="og:url" content="http://lili1990.github.io/2016/12/10/Spring-启动过程详解/index.html">
 <meta property="og:site_name" content="记忆、淡忘">
 <meta property="og:description" content="一、简述1、我们在Java web 项目开发中，都会有一个web.xml文件，这个文件中一定会有如下一段代码：
-123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;
-这个Conte">
+123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;">
 <meta property="og:image" content="https://raw.githubusercontent.com/lili1990/spring-learning/master/spring/ServletContextListener.png">
-<meta property="og:updated_time" content="2016-12-09T16:27:54.934Z">
+<meta property="og:updated_time" content="2016-12-09T16:56:11.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring 启动过程详解">
 <meta name="twitter:description" content="一、简述1、我们在Java web 项目开发中，都会有一个web.xml文件，这个文件中一定会有如下一段代码：
-123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;
-这个Conte">
+123&amp;lt;listener&amp;gt;  &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;&amp;lt;/listener&amp;gt;">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/lili1990/spring-learning/master/spring/ServletContextListener.png">
 
 
@@ -109,7 +106,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -214,6 +211,26 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -339,6 +356,7 @@
       
         <h2 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h2><p>1、我们在Java web 项目开发中，都会有一个web.xml文件，这个文件中一定会有如下一段代码：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>这个ContextLoaderListener类中有一个方法如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">	 * Initialize the root web application context.</div><div class="line">	 */</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</div><div class="line">		initWebApplicationContext(event.getServletContext());</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <p>因此，我们可以知道web项目启动时调用contextInitialized进行初始化的，这个方法又会在<br>tomcat 或者Jetty等插件中被调用。当然了不管是Tomcat还是Jetty，操作的对象都是ServletContextListener<br>，这里不再详细描述，之后有时间学习一Jetty源码。</p>
@@ -380,15 +398,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/09/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/10/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -463,10 +481,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -544,7 +562,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -610,6 +628,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
