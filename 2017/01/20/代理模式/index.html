@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="spring," />
+  <meta name="keywords" content="Jdk," />
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="通过spring容器创建一个Bean实例时，不仅可以完成Bean实例的实例化，还可以为Bean指定特定的作用域，Spring支持五种作用域。">
+<meta name="description" content="###一、定义代理模式（Proxy），为其它对象提供一种代理以控制对这个对象的访问。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-bean作用域scope详解 ">
-<meta property="og:url" content="http://lili1990.github.io/2016/12/13/Spring-bean作用域scope详解/index.html">
+<meta property="og:title" content="代理模式">
+<meta property="og:url" content="http://lili1990.github.io/2017/01/20/代理模式/index.html">
 <meta property="og:site_name" content="记忆、淡忘">
-<meta property="og:description" content="通过spring容器创建一个Bean实例时，不仅可以完成Bean实例的实例化，还可以为Bean指定特定的作用域，Spring支持五种作用域。">
-<meta property="og:updated_time" content="2016-12-13T13:32:33.780Z">
+<meta property="og:description" content="###一、定义代理模式（Proxy），为其它对象提供一种代理以控制对这个对象的访问。">
+<meta property="og:image" content="http://img.blog.csdn.net/20160512210349612">
+<meta property="og:updated_time" content="2017-01-20T14:07:26.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring-bean作用域scope详解 ">
-<meta name="twitter:description" content="通过spring容器创建一个Bean实例时，不仅可以完成Bean实例的实例化，还可以为Bean指定特定的作用域，Spring支持五种作用域。">
+<meta name="twitter:title" content="代理模式">
+<meta name="twitter:description" content="###一、定义代理模式（Proxy），为其它对象提供一种代理以控制对这个对象的访问。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160512210349612">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://lili1990.github.io/2016/12/13/Spring-bean作用域scope详解/"/>
+  <link rel="canonical" href="http://lili1990.github.io/2017/01/20/代理模式/"/>
 
 
 
 
 
-  <title> Spring-bean作用域scope详解  | 记忆、淡忘 </title>
+  <title> 代理模式 | 记忆、淡忘 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://lili1990.github.io/2016/12/13/Spring-bean作用域scope详解/">
+  <link itemprop="mainEntityOfPage" href="http://lili1990.github.io/2017/01/20/代理模式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="记忆、淡忘">
@@ -282,7 +284,7 @@
             
             
               
-                Spring-bean作用域scope详解 
+                代理模式
               
             
           </h1>
@@ -295,8 +297,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T21:31:59+08:00">
-                2016-12-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-20T22:05:38+08:00">
+                2017-01-20
               </time>
             
 
@@ -306,13 +308,31 @@
           </span>
 
           
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/13/Spring-bean作用域scope详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/Spring-bean作用域scope详解/" itemprop="commentCount"></span>
+                <a href="/2017/01/20/代理模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/20/代理模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,22 +363,20 @@
       
 
       
-        <p>通过spring容器创建一个Bean实例时，不仅可以完成Bean实例的实例化，还可以为Bean指定特定的作用域，Spring支持五种作用域。</p>
+        <p>###一、定义<br>代理模式（Proxy），为其它对象提供一种代理以控制对这个对象的访问。</p>
 <a id="more"></a>
-<ul>
-<li>singleton ：单例模式<br>在整个Spring IoC容器中，使用singleton定义的bean只有一个实例。</li>
-<li>prototype：原型模式<br>每次通过getBean方法获取prototype定义的Bean时，都会产生一个Bean实例。</li>
-<li>request<br>在每次HTTP请求中，request定义的bean都会产生一个实例；即每次HTTP请求将会有各自的bean实，。该作用域仅在web应用中使用Spring情形下有效。</li>
-<li>session<br>在每次HTTP Session中，session定义的bean都会产生一个实例。即每次HTTP session 请求将会有各自的bean实例。该作用域仅在web应用中使用Spring情形下有效。</li>
-<li>global session<br>每个全局的HTTP Session中对应一个实例。典型情况下，仅在使用portlet context的时候有效。该作用域仅在web应用中使用Spring情形下有效。</li>
-</ul>
-<h3 id="1-Singleton作用域"><a href="#1-Singleton作用域" class="headerlink" title="1.Singleton作用域"></a>1.Singleton作用域</h3><p>当一个bean的作用域为singleton, 那么Spring IoC容器中只会存在一个共享的bean实例，每次请求该bean都会返回bean的同一实例。<br>换言之，当把一个bean定义设置为singlton作用域时，Spring IoC容器只会创建该bean定义的唯一实例。这个单一实例会被存储到单例缓存（singleton cache）中，并且所有针对该bean的后续请求和引用都将返回被缓存的对象实例。</p>
-<h3 id="2-Prototype"><a href="#2-Prototype" class="headerlink" title="2.Prototype"></a>2.Prototype</h3><p>Prototype作用域的bean会导致在每次请求该id的Bean时都会创建一个新的bean实例，然后返回给程序。这种情况下，spring容器仅仅使用new关键字创建Bean实例，一旦创建成功，容器不再维护Bean实例的状态。</p>
-<h3 id="3-其他作用域"><a href="#3-其他作用域" class="headerlink" title="3. 其他作用域"></a>3. 其他作用域</h3><h4 id="3-1-Request作用域"><a href="#3-1-Request作用域" class="headerlink" title="3.1. Request作用域"></a>3.1. Request作用域</h4><p>考虑下面bean定义：<br>针对每次HTTP请求，Spring容器会创建一个全新的bean实例，且该bean实例仅在当前HTTP request内有效，因此可以根据需要放心的更改所建实例的内部状态，而其他请求中获得的 bean实例不会看到这些特定于某个请求的状态变化。当处理请求结束，request作用域的bean实例将被销毁。</p>
-<h4 id="3-2-Session作用域"><a href="#3-2-Session作用域" class="headerlink" title="3.2. Session作用域"></a>3.2. Session作用域</h4><p>考虑下面bean定义：<br>Session作用域与request作用域一样，区别在于：request作用域的Bean对于每次HTTP请求有效，而session作用域的Bean则对应每次HTTP Session有效。</p>
-<p>注：request、session作用域只在web应用中才有效，并且必须在web应用中增加相应配置才会生效。为了让request、session作用域生效，必须把HTTP请求对象绑定到为该请求提供服务的线程上，使得具有request和session作用域的Bean实例能够在后面的调用中被访问。</p>
-<p>在web.xml文件增加listener配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.request.RequestContextListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>UML图</p>
+<p><img src="http://img.blog.csdn.net/20160512210349612" alt="这里写图片描述"></p>
+<p>###二、静态代理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明了目标对象和代理对象的共同接口，这样一来在任何可以</span></div><div class="line"><span class="comment">//使用目标对象的地方都可以使用代理对象。</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Interface</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">somethingElse</span><span class="params">(String arg)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义了代理对象所代表的目标对象。</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealObect</span> <span class="keyword">implements</span> <span class="title">Interface</span> </span>&#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"------doSomething----"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">somethingElse</span><span class="params">(String arg)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"------somethingElse----"</span> + arg);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//代理对象内部含有目标对象的引用，从而可以在任何时候操作目标对象；</span></div><div class="line"><span class="comment">//代理对象提供一个与目标对象相同的接口，以便可以在任何时候替代目标对象。</span></div><div class="line"><span class="comment">//代理对象通常在客户端调用传递给目标对象之前或之后，执行某个操作，</span></div><div class="line"><span class="comment">//而不是单纯地将调用传递给目标对象。</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleProxy</span> <span class="keyword">implements</span> <span class="title">Interface</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Interface proxied;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SimpleProxy</span><span class="params">(Interface proxied)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.proxied = proxied;</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"SimpleProxy-----doSomething----"</span>);</div><div class="line">		proxied.doSomething();</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">somethingElse</span><span class="params">(String arg)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"SimpleProxy------somethingElse----"</span> + arg);</div><div class="line">		proxied.somethingElse(arg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleProxyDemo</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">consumer</span><span class="params">(Interface iface)</span> </span>&#123;</div><div class="line">		iface.doSomething();</div><div class="line">		iface.somethingElse(<span class="string">"----"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		consumer(<span class="keyword">new</span> RealObect());</div><div class="line">		consumer(<span class="keyword">new</span> SimpleProxy(<span class="keyword">new</span> RealObect()));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//输出：</span></div><div class="line"><span class="comment">/*</span></div><div class="line">------doSomething----</div><div class="line">------somethingElse--------</div><div class="line">SimpleProxy-----doSomething----</div><div class="line">------doSomething----</div><div class="line">SimpleProxy------somethingElse--------</div><div class="line">------somethingElse--------   </div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>小结：<br>代理模式：为其他对象提供一种代理以控制对这个对象的访问。<br>在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用 。</p>
+<p>优点<br> (1).职责清晰<br> 真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。<br> (2).代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了的作用和保护了目标对象的作用。<br> (3).高扩展性<br> 模式结构<br> 一个是真正的你要访问的对象(目标类)，一个是代理对象,真正对象与代理<br> 对象实现同一个接口,先访问代理类再访问真正要访问的对象。</p>
+<p>###三、动态代理</p>
+<p>动态的创建代理并动态的处理对所代理方法的调用。</p>
+<p>具体可看<a href="http://blog.csdn.net/Lili429/article/details/54633230" target="_blank" rel="external">JDK动态代理http://blog.csdn.net/Lili429/article/details/54633230</a></p>
 
       
     </div>
@@ -382,7 +400,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/Jdk/" rel="tag"># Jdk</a>
           
         </div>
       
@@ -391,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/13/Spring-IOC之容器依赖注入/" rel="next" title="Spring IOC之容器依赖注入">
-                <i class="fa fa-chevron-left"></i> Spring IOC之容器依赖注入
+              <a href="/2017/01/11/Spring-数据库组件之JDBC/" rel="next" title="Spring 数据库组件之JDBC">
+                <i class="fa fa-chevron-left"></i> Spring 数据库组件之JDBC
               </a>
             
           </div>
@@ -401,8 +419,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/17/Spring-Bean的初始化以及销毁/" rel="prev" title="Spring Bean的初始化以及销毁">
-                Spring Bean的初始化以及销毁 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/20/JDK动态代理/" rel="prev" title="JDK动态代理">
+                JDK动态代理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -418,10 +436,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/13/Spring-bean作用域scope详解/"
-     data-title="Spring-bean作用域scope详解 "
+        <div class="ds-share flat" data-thread-key="2017/01/20/代理模式/"
+     data-title="代理模式"
      data-content=""
-     data-url="http://lili1990.github.io/2016/12/13/Spring-bean作用域scope详解/">
+     data-url="http://lili1990.github.io/2017/01/20/代理模式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -448,8 +466,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/13/Spring-bean作用域scope详解/"
-           data-title="Spring-bean作用域scope详解 " data-url="http://lili1990.github.io/2016/12/13/Spring-bean作用域scope详解/">
+      <div class="ds-thread" data-thread-key="2017/01/20/代理模式/"
+           data-title="代理模式" data-url="http://lili1990.github.io/2017/01/20/代理模式/">
       </div>
     
   </div>
@@ -473,17 +491,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -536,22 +545,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Singleton作用域"><span class="nav-number">1.</span> <span class="nav-text">1.Singleton作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Prototype"><span class="nav-number">2.</span> <span class="nav-text">2.Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-其他作用域"><span class="nav-number">3.</span> <span class="nav-text">3. 其他作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Request作用域"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. Request作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Session作用域"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. Session作用域</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
